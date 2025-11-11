@@ -16,7 +16,7 @@
 
 
 <p align="center">
-  <img src="https://github.com/masecla22/CamScanner-Watermark-Remover/blob/master/assets/logo.png?raw=true" width="70%">
+  <img src="https://github.com/masecla22/CamScanner-Watermark-Remover/blob/master/assets/logo.png?raw=true" width="30%">
 </p>
 
 # CamScanner-Watermark-Remover
