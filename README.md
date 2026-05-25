@@ -5,6 +5,14 @@
     <img alt="Docker" height="26" src="https://img.shields.io/badge/ghcr.io-masecla22%2Fcamscanner--watermark--remover-blue?style=for-the-badge&logo=github">
 </div>
 
+<div align="center">
+    <img alt="github" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/github_vector.svg">
+    <img alt="git" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/git_vector.svg">
+    <img alt="generic" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/documentation/generic_vector.svg">
+    <img alt="pc" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/supported/pc_vector.svg">
+<img alt="ps3" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/supported/ps3_vector.svg">
+</div>
+
 <br>
 
 <p align="center">
