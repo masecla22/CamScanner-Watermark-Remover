@@ -27,14 +27,12 @@ jobs:
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: remover-frontend/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        working-directory: remover-frontend
         run: npm ci
 
       - name: Build static site
-        working-directory: remover-frontend
         env:
           BASE_PATH: /CamScanner-Watermark-Remover
         run: npm run build
@@ -42,7 +40,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: remover-frontend/out
+          path: out
 
   deploy:
     environment:

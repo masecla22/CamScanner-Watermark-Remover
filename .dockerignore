@@ -1,0 +1,13 @@
+.git
+.github
+node_modules
+.next
+out
+helm
+assets
+README.md
+LICENSE
+nginx.conf
+Dockerfile
+.dockerignore
+*.tgz

@@ -36,7 +36,6 @@ Deployed via GitHub Pages: https://masecla22.github.io/CamScanner-Watermark-Remo
 ## Running locally
 
 ```bash
-cd remover-frontend
 npm install
 npm run dev
 ```
