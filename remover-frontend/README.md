@@ -1,41 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# remover-frontend
 
-## Getting Started
+The Next.js frontend for the CamScanner Watermark Remover. All processing runs entirely in the browser using [pdf-lib](https://github.com/Hopding/pdf-lib). No data is sent to any server.
 
-First, run the development server:
+## Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build (static export)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+Output lands in `out/`. The site is fully static -- no Node.js server is required at runtime. Serve `out/` with any static file host or web server.
 
-To learn more about Next.js, take a look at the following resources:
+To build with a base path (required for GitHub Pages subdirectory hosting):
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+BASE_PATH=/CamScanner-Watermark-Remover npm run build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Stack
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-
-
-
+- Next.js 16 with `output: "export"` for fully static output
+- React 19
+- Tailwind CSS v4
+- shadcn/ui component primitives
+- pdf-lib for PDF parsing and manipulation
 

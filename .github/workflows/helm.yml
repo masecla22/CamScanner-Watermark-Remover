@@ -1,0 +1,58 @@
+name: Publish Helm Chart
+
+on:
+  push:
+    branches: [master]
+    tags: ["v*"]
+
+env:
+  REGISTRY: ghcr.io
+  CHART_PATH: helm/camscanner-watermark-remover
+
+jobs:
+  helm-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+
+      - name: Determine chart version
+        id: chart_version
+        run: |
+          if [[ "${{ github.ref }}" == refs/tags/v* ]]; then
+            echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+          else
+            SHORT_SHA=$(git rev-parse --short HEAD)
+            echo "version=0.0.0-${SHORT_SHA}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Determine app version
+        id: app_version
+        run: |
+          if [[ "${{ github.ref }}" == refs/tags/v* ]]; then
+            echo "version=${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=sha-$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Log in to GHCR
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | helm registry login ${{ env.REGISTRY }} \
+            --username ${{ github.actor }} \
+            --password-stdin
+
+      - name: Package and push chart
+        run: |
+          helm package ${{ env.CHART_PATH }} \
+            --version ${{ steps.chart_version.outputs.version }} \
+            --app-version ${{ steps.app_version.outputs.version }}
+
+          helm push camscanner-watermark-remover-${{ steps.chart_version.outputs.version }}.tgz \
+            oci://${{ env.REGISTRY }}/${{ github.repository_owner }}/charts
